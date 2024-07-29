@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta content="Embed Title" property="og:title" />
+    <meta content="Site Description" property="og:description" />
+    <meta content="https://embed.com/this-is-the-site-url" property="og:url" />
+    <meta content="https://embed.com/embedimage.png" property="og:image" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" /> -->
+    <title>Image Popup</title>
+    <style>
+        body {
+            background-color: #2e2e2e;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the top */
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-y: auto; /* Enable vertical scrolling */
+            a:link { color: lightskyblue; };
+            a:visited { color: lightskyblue; };
+            a:hover { color: #ffffff; };
+            a:active { color: #ff4040; text-decoration:none; font-weight:normal; };
+
+        }
+
+        /* Container to center content */
+        .container {
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
+            margin: 20px auto;
+            border: 1px, solid, #474747;
+            border-radius: 12px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: #474747;
+        }
+
+        .container-center {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Style the Image Used to Trigger the Modal */
+        .popup-img {
+          border-radius: 5px;
+          cursor: pointer;
+          transition: 0.3s;
+          width: 100%;
+          max-width: 300px;
+          margin: 20px 0;
+        }
+
+        .popup-img:hover {opacity: 0.7;}
+
+        /* The Modal (background) */
+        .modal {
+          display: none; 
+          position: fixed; 
+          z-index: 1; 
+          padding-top: 100px; 
+          left: 0;
+          top: 0;
+          width: 100%; 
+          height: 100%; 
+          overflow: auto; 
+          background-color: rgba(0, 0, 0, 0.9); 
+        }
+
+        /* Modal Content (Image) */
+        .modal-content {
+          margin: auto;
+          display: block;
+          width: 80%;
+          max-width: 700px;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+          margin: auto;
+          display: block;
+          width: 80%;
+          max-width: 700px;
+          text-align: justify;
+          color: #ccc;
+          padding: 10px 0;
+          height: 150px;
+        }
+
+        /* Add Animation - Zoom in the Modal */
+        .modal-content, #caption { 
+          animation-name: zoom;
+          animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+          from {transform:scale(0)} 
+          to {transform:scale(1)}
+        }
+
+        /* The Close Button */
+        .close {
+          position: absolute;
+          top: 15px;
+          right: 35px;
+          color: #f1f1f1;
+          font-size: 40px;
+          font-weight: bold;
+          transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: #bbb;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        /* Markdown styling */
+        .markdown {
+          margin: 20px 0;
+          text-align: left;
+        }
+
+        /* Markdown styling */
+        .markdown-center {
+          margin: 20px 0;
+          text-align: center;
+        }
+
+        .boxed {
+        background: #F2F2F2;
+        color: black;
+        /* border: 3px solid #535353; */
+        margin: 0px 0;
+        padding: 10px;
+        border-radius: 10px;
+        a:link { color: rgb(98, 195, 255); };
+        a:visited { color: rgb(98, 195, 255); };
+        a:hover { color: lightskyblue; };
+        a:active { color: #ff4040; text-decoration:none; font-weight:normal; };
+      }
+
+      mark {
+        background-color: #202020;
+        color: #ffffff;
+        padding: 1px;
+        border: 1px solid black;
+        border-radius: 6px;
+        padding-top: 0px;
+      }
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="container-center">
+    <img class="popup-img" src="https://dl.dropboxusercontent.com/scl/fi/sywhccjgsidyorugh68g8/IconRaw512x512.png?rlkey=10l31j43v0n4w1cbyek3gxud8&st=7rj36sb3&dl=1" alt="The Friends We Make Along The Way">
+    <div class="markdown-center">
+    <h1 id="the-friends-we-make-along-the-way">The Friends We Make Along The Way</h1>
+    </div>
+  </div>
+    <div class="markdown">
+      <h1 id="table-of-contents">Table of contents</h1>
+      <hr>
+      <div class="boxed">
+        <ol>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#server-subdomain">Server Subdomain</a></li>
+        <li><a href="#recommended">Recommended</a></li>
+        <li><a href="#optionally">Optionally</a></li>
+      </ol>
+      </div>
+    </div>
+    <div class="markdown">
+      <h2 id="prerequisites">Prerequisites</h2>
+      <hr>
+      <ul>
+      <li><mark><code>Java 8</code></mark> or newer<ul>
+      <li>see <a href="https://fabricmc.net/wiki/player:tutorials:java:windows" target="_blank" rel="noopener noreferrer">how to install Java 17</a> for help on windows or use <mark><code>java -version</code></mark> in terminal </li>
+      </ul>
+      </li>
+      <li><mark><code>Minecraft Java Edition 1.21</code></mark><ul>
+      <li>see <a href="https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21" target="_blank" rel="noopener noreferrer">Mincraft 1.21</a></li>
+      </ul>
+      </li>
+      </ul>
+      </blockquote>
+      <h2 id="server-subdomain">Server Subdomain</h2>
+      <hr>
+      <blockquote>
+      <p>use server address: <mark><code>Friend.mc.gg</code></mark></p>      
+    </div>
+    <img class="popup-img" src="https://dl.dropboxusercontent.com/scl/fi/kftbxvkva17peaxdg666d/Screenshot-2024-07-26-151804.png?rlkey=u5d40fs35h93ksg0wlqchqpe3&st=uur9brai&dl=1" alt="Server Address">
+    <div class="markdown">
+      <h2 id="recommended">Recommended</h2>
+      <hr>
+      <ul>
+      <li><mark><code>Fabric Loader 0.15.11</code></mark> or newer for Minecraft <mark><code>1.21</code></mark> Client<ul>
+      <li>see <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener noreferrer">Fabric Installer</a></li>
+      </ul>
+      </li>
+      </ul>      
+    </div>
+    <img class="popup-img" src="https://dl.dropboxusercontent.com/scl/fi/37k7dmyklbq6vvt3jhsvg/Screenshot-2024-07-26-161315.png?rlkey=ok24fs295skzacng79otibfkw&st=t85b6j0m&dl=1" alt="Fabric Installer">
+    <div class="markdown">
+      <ul>
+      <li>Allocate 4GB Ram to Minecraft Installation<ul>
+      <li>Change <mark><code>-Xmx2G</code></mark> in <mark><code>JVM ARGUMENTS</code></mark> to <mark><code>-Xmx4G</code></mark> and click <mark><code>Save</code></mark></li>
+      </ul>
+      </li>
+      </ul>        
+    </div>
+    <img class="popup-img" src="https://dl.dropboxusercontent.com/scl/fi/x7zq7gas4xx6n3m4ff43t/Screenshot-2024-07-26-174752.png?rlkey=74eqywnpha2nvu2y1x7n56xu7&st=tcjv36mo&dl=1" alt="Allocate memory in Launcher">
+    <div class="markdown">
+      <ul>
+      <li>Add Mods to <mark><code>%appdata%\.minecraft\mods</code></mark><ul>
+      <li>or wherever your .minecraft/mods folder is located (different for Mac and Linux)</li>
+      </ul>
+      </li>
+      </ul>
+      <blockquote>
+      <p><a href="https://dl.dropboxusercontent.com/scl/fi/1wmqaq8wcz0ehva06dsp1/UNZIP-ME-IN-CLIENT-MODS-FOLDER.zip?rlkey=2dxc8zsezogvoqw81j8372nso&amp;st=onvb3suh&amp;dl=1" rel="noopener noreferrer">UNZIP ME IN CLIENT MODS FOLDER.zip</a></p>
+      </blockquote>
+      <h2 id="optionally">Optionally</h2>
+      <hr>
+      <ul>
+      <li>Add a Resource Pack to <mark><code>%appdata%\.minecraft\resourcepacks</code></mark>
+      <ul>
+      <li>The Server resource pack is not enforced, so feel free to disable it in <mark><code>server info</code></mark></li>
+      <li>Direct download redirect link: <a href="https://vanillatweaks.net/share#5qGgiQ" target="_blank" rel="noopener noreferrer">here</a></li>
+      </ul>
+      </li>
+      <li>Add <mark><code>Sodium</code></mark> and <mark><code>Indium</code></mark> or any other client side performance enhancing mods to your mods folder
+      <ul>
+      <li>see <a href="https://modrinth.com/mod/indium/versions?g=1.21&amp;l=fabric" target="_blank" rel="noopener noreferrer">Indium</a></li>
+      <li>Note: While Sodium does not require Indium API, the Continuity mod requires Indium when Sodium is installed</li>
+      </ul>
+      </li>
+      </ul>
+      </blockquote>  
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the images and insert them inside the modal - use their "alt" text as a caption
+    var images = document.getElementsByClassName("popup-img");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    for (let img of images) {
+      img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      }
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+      modal.style.display = "none";
+    }
+
+    // When the user clicks outside the modal image, close the modal
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // When the user presses the Escape key, close the modal
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>
