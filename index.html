@@ -8,6 +8,8 @@
     <meta content="https://friendmc.github.io" property="og:url" />
     <meta content="https://dl.dropboxusercontent.com/scl/fi/sywhccjgsidyorugh68g8/IconRaw512x512.png?rlkey=10l31j43v0n4w1cbyek3gxud8&st=7rj36sb3&dl=1" property="og:image" />
     <meta content="#d6228b" data-react-helmet="true" name="theme-color" />
+    <link rel="stylesheet noopener noreferrer" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" >
+    const 
     <title>Friend.mc.gg</title>
     <style>
         body {
@@ -25,6 +27,10 @@
             a:hover { color: #ffffff; };
             a:active { color: #ff4040; text-decoration:none; font-weight:normal; };
 
+        }
+
+        :root {
+        --last-updated: 'July 26, 2023'; /*set upload date for the mods folder */
         }
 
         /* Container to center content */
@@ -155,6 +161,43 @@
         border-radius: 6px;
         padding-top: 0px;
       }
+      
+      .download-container {
+        text-align: center;
+        a:link { color: #ffffff; };
+      }
+    
+      .download-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: #ffffff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+    
+      .download-btn i {
+        margin-right: 8px;
+      }
+    
+      .download-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+      
+      .update-info {
+      margin-top: 10px;
+      font-size: 14px;
+      /* color: #555; */
+      }
+
+      .update-info::before {
+        content: "Last updated: " var(--last-updated);
+      }
+
     </style>
 </head>
 <body>
@@ -229,23 +272,40 @@
       </li>
       </ul>
       <blockquote>
-      <p><a href="https://dl.dropboxusercontent.com/scl/fi/1wmqaq8wcz0ehva06dsp1/UNZIP-ME-IN-CLIENT-MODS-FOLDER.zip?rlkey=2dxc8zsezogvoqw81j8372nso&amp;st=onvb3suh&amp;dl=1" rel="noopener noreferrer">UNZIP ME IN CLIENT MODS FOLDER.zip</a></p>
+        <div class="download-container">
+        <a href="https://dl.dropboxusercontent.com/scl/fi/1wmqaq8wcz0ehva06dsp1/UNZIP-ME-IN-CLIENT-MODS-FOLDER.zip?rlkey=2dxc8zsezogvoqw81j8372nso&amp;st=onvb3suh&amp;dl=1" rel="noopener noreferrer" class="download-btn">
+        <i class="fas fa-download"></i>Download Mods</a>
+        <p class="update-info"></p>
+        </div>
       </blockquote>
       <h2 id="optionally">Optionally</h2>
       <hr>
       <ul>
-      <li>Add a Resource Pack to <mark><code>%appdata%\.minecraft\resourcepacks</code></mark>
-      <ul>
-      <li>The Server resource pack is not enforced, so feel free to disable it in <mark><code>server info</code></mark></li>
-      <li>Direct download redirect link: <a href="https://vanillatweaks.net/share#5qGgiQ" target="_blank" rel="noopener noreferrer">here</a></li>
-      </ul>
-      </li>
-      <li>Add <mark><code>Sodium</code></mark> and <mark><code>Indium</code></mark> or any other client side performance enhancing mods to your mods folder
-      <ul>
-      <li>see <a href="https://modrinth.com/mod/indium/versions?g=1.21&amp;l=fabric" target="_blank" rel="noopener noreferrer">Indium</a></li>
-      <li>Note: While Sodium does not require Indium API, the Continuity mod requires Indium when Sodium is installed</li>
-      </ul>
-      </li>
+        <li>Add a Resource Pack to <mark><code>%appdata%\.minecraft\resourcepacks</code></mark>
+          <ul>
+            <li>The Server resource pack is not enforced, so feel free to disable it in <mark><code>server info</code></mark></li>
+            <li>Direct download redirect link: <a href="https://vanillatweaks.net/share#5qGgiQ" target="_blank" rel="noopener noreferrer">here</a></li>
+          </ul>
+        </li>
+        <li>Add <mark><code>Sodium</code></mark> and <mark><code>Indium</code></mark> or any other client side performance enhancing mods to your mods folder
+          <ul>
+            <li>see <a href="https://modrinth.com/mod/indium/versions?g=1.21&amp;l=fabric" target="_blank" rel="noopener noreferrer">Indium</a></li>
+            <li>Note: While Sodium does not require Indium API, the Continuity mod requires Indium when Sodium is installed</li>
+            <li>Note: Sodium also has some Hardware and Driver Compatibility requirements - see <a href="https://modrinth.com/mod/sodium#installation" target="_blank" rel="noopener noreferrer">here</a></li>
+          </ul>
+        </li>
+        <li> Add <mark><code>Cubes Without Borders</code></mark>
+          <ul>
+            <li>Adds setting to play Minecraft in Windowed Full Screen - see <a href="https://modrinth.com/mod/cubes-without-borders/versions?g=1.21" target="_blank" rel="noopener noreferrer">here</a></li>
+            <li>Useful for playing with multiple displays. Will prevent minecraft from minimizing when using another display</li>
+          </ul> 
+        </li>
+        <li> Use an Open Source Instance Manager like <mark><code>Prism Launcher</code></mark>
+          <ul>
+            <li> see <a href="https://prismlauncher.org" target="_blank" rel="noopener noreferrer">here</a></li>
+            <li> Useful for managing Minecraft instances. Also does not announce you are playing Minecraft to other applications and devices</li>
+          </ul> 
+        </li>
       </ul>
       </blockquote>  
     </div>
